@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vaulity_application1/core/app_export.dart';
+import 'package:vaultify_app/core/app_export.dart';
 
 class BaseButton extends StatelessWidget {
   BaseButton({

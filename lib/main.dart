@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:vaulity_application1/theme/theme_helper.dart';
-import 'package:vaulity_application1/routes/app_routes.dart';
+import 'package:vaultify_app/theme/theme_helper.dart';
+import 'package:vaultify_app/routes/app_routes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: theme,
-      title: 'vaulity_application1',
+      title: 'vaulity_app',
       debugShowCheckedModeBanner: false,
       initialRoute: AppRoutes.androidSmallOneScreen,
       routes: AppRoutes.routes,

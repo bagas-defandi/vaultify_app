@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vaulity_application1/core/app_export.dart';
-import 'package:vaulity_application1/widgets/custom_elevated_button.dart';
+import 'package:vaultify_app/core/app_export.dart';
+import 'package:vaultify_app/widgets/custom_elevated_button.dart';
 
 class AndroidSmallOneScreen extends StatelessWidget {
   const AndroidSmallOneScreen({Key? key})
