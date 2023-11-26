@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:vaultify_app/core/app_export.dart';
 import 'package:vaultify_app/widgets/custom_elevated_button.dart';
 
-class AndroidSmallOneScreen extends StatelessWidget {
-  const AndroidSmallOneScreen({Key? key})
-      : super(
-          key: key,
-        );
+class DashboardPage extends StatelessWidget {
+  const DashboardPage({super.key});
 
   @override
   Widget build(BuildContext context) {

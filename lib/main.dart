@@ -12,17 +12,19 @@ void main() {
 
   ///Please update theme as per your need if required.
   ThemeHelper().changeTheme('primary');
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: theme,
       title: 'vaulity_app',
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.androidSmallOneScreen,
+      initialRoute: AppRoutes.loginPage,
       routes: AppRoutes.routes,
     );
   }

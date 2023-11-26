@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:vaultify_app/presentation/android_small_one_screen/android_small_one_screen.dart';
+import 'package:vaultify_app/pages/dashboard_page.dart';
+import 'package:vaultify_app/pages/login_page.dart';
 
 class AppRoutes {
-  static const String androidSmallOneScreen = '/android_small_one_screen';
+  static const String dashboardPage = './dashboard_page,dart';
+  static const String loginPage = './login_page.dart';
 
   static Map<String, WidgetBuilder> routes = {
-    androidSmallOneScreen: (context) => AndroidSmallOneScreen()
+    dashboardPage: (context) => const DashboardPage(),
+    loginPage: (context) => const LoginPage(),
   };
 }
