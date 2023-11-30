@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vaultify_app/pages/dashboard_page.dart';
+import 'package:vaultify_app/pages/signup_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -24,7 +25,6 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 Image.asset('assets/images/vaultify_logo2.png'),
                 const SizedBox(height: 16.0),
-                const Text('SHRINE'),
               ],
             ),
             TextField(
@@ -51,8 +51,8 @@ class _LoginPageState extends State<LoginPage> {
               ),
               obscureText: true,
             ),
-
             const SizedBox(height: 20.0),
+
             OverflowBar(
               alignment: MainAxisAlignment.end,
               children: <Widget>[
@@ -71,12 +71,20 @@ class _LoginPageState extends State<LoginPage> {
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromRGBO(241, 172, 70, 1),
-                    padding: const EdgeInsets.all(30),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 40,
+                      vertical: 30,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
                   ),
                   child: const Text(
                     'Login',
                     style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   onPressed: () {
                     if (_usernameController.text.isNotEmpty &&
@@ -103,7 +111,15 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const SignUpPage();
+                        },
+                      ),
+                    );
+                  },
                   style: TextButton.styleFrom(
                     padding: const EdgeInsets.only(
                       left: 0,
