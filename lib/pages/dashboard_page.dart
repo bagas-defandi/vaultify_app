@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vaultify_app/core/app_export.dart';
+import 'package:vaultify_app/pages/login_page.dart';
 import 'package:vaultify_app/widgets/custom_elevated_button.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -26,6 +27,10 @@ class DashboardPage extends StatelessWidget {
               ),
               SizedBox(height: 12.v),
               _buildOneRow(context),
+              ElevatedButton(
+                  onPressed: () => Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => LoginPage())),
+                  child: const Text("Logout")),
               SizedBox(height: 12.v),
               _buildThreeRow(context),
               SizedBox(height: 21.v),

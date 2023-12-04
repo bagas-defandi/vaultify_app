@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:vaultify_app/database/user_db.dart';
+import 'package:vaultify_app/model/user.dart';
 import 'package:vaultify_app/pages/login_page.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -13,6 +15,19 @@ class _SignUpPageState extends State<SignUpPage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   final _rePasswordController = TextEditingController();
+  final userDB = UserDB();
+
+  signUp() async {
+    var res = await userDB.createUser(User(
+        name: _nameController.text,
+        username: _usernameController.text,
+        password: _passwordController.text));
+    if (res > 0) {
+      if (!mounted) ;
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => LoginPage()));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -142,16 +157,11 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   onPressed: () {
-                    if (_nameController.text.isNotEmpty &&
-                        _usernameController.text.isNotEmpty &&
-                        _passwordController.text.isNotEmpty &&
-                        _rePasswordController.text.isNotEmpty) {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginPage(),
-                        ),
-                      );
+                    if (_passwordController.text ==
+                            _rePasswordController.text &&
+                        _nameController.text.isNotEmpty &&
+                        _passwordController.text.isNotEmpty) {
+                      signUp();
                     }
                   },
                 ),

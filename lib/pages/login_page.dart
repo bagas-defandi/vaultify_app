@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:vaultify_app/database/user_db.dart';
+import 'package:vaultify_app/model/user.dart';
 import 'package:vaultify_app/pages/dashboard_page.dart';
 import 'package:vaultify_app/pages/signup_page.dart';
 
@@ -12,6 +14,23 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool isLoginTrue = false;
+  final userDB = UserDB();
+
+  login() async {
+    var res = await userDB.authenticate(User(
+        username: _usernameController.text,
+        password: _passwordController.text));
+    if (res == true) {
+      if (!mounted) ;
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => DashboardPage()));
+    } else {
+      setState(() {
+        isLoginTrue = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +58,6 @@ class _LoginPageState extends State<LoginPage> {
             ),
             // spacer
             const SizedBox(height: 20.0),
-            // [Password]
             TextField(
               controller: _passwordController,
               decoration: const InputDecoration(
@@ -89,15 +107,22 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     if (_usernameController.text.isNotEmpty &&
                         _passwordController.text.isNotEmpty) {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const DashboardPage(),
-                        ),
-                      );
+                      login();
                     }
                   },
                 ),
+              ],
+            ),
+            const SizedBox(height: 30.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                isLoginTrue
+                    ? const Text(
+                        "username or password is incorrect",
+                        style: TextStyle(color: Colors.red),
+                      )
+                    : const SizedBox(),
               ],
             ),
             const SizedBox(height: 130.0),
