@@ -101,6 +101,9 @@ class ColorSchemes {
   );
 }
 
+Color primaryBlue = Color.fromARGB(255, 83, 69, 240);
+Color primaryOrange = Color(0XFFF0AC45);
+
 /// Class containing custom colors for a primary theme.
 class PrimaryColors {
   // BlueGray
