@@ -23,7 +23,7 @@ class _SignUpPageState extends State<SignUpPage> {
         username: _usernameController.text,
         password: _passwordController.text));
     if (res > 0) {
-      if (!mounted) ;
+      if (!mounted);
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => LoginPage()));
     }

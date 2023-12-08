@@ -3,6 +3,7 @@ import 'package:vaultify_app/database/user_db.dart';
 import 'package:vaultify_app/model/user.dart';
 import 'package:vaultify_app/pages/dashboard_page.dart';
 import 'package:vaultify_app/pages/signup_page.dart';
+import 'package:vaultify_app/theme/theme_helper.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -18,13 +19,18 @@ class _LoginPageState extends State<LoginPage> {
   final userDB = UserDB();
 
   login() async {
+    User? currentUser = await userDB.getUser(_usernameController.text);
     var res = await userDB.authenticate(User(
         username: _usernameController.text,
         password: _passwordController.text));
     if (res == true) {
       if (!mounted) ;
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => DashboardPage()));
+          context,
+          MaterialPageRoute(
+              builder: (context) => DashboardPage(
+                    user: currentUser,
+                  )));
     } else {
       setState(() {
         isLoginTrue = true;
@@ -150,10 +156,10 @@ class _LoginPageState extends State<LoginPage> {
                       left: 0,
                     ),
                   ),
-                  child: const Text(
+                  child: Text(
                     "Sign Up",
                     style: TextStyle(
-                      color: Color.fromRGBO(241, 172, 70, 1),
+                      color: primaryOrange,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
