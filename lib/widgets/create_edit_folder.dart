@@ -45,7 +45,12 @@ class _CreateEditFolderWidgetState extends State<CreateEditFolderWidget> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: const Text(
+              'Cancel',
+              style: TextStyle(
+                color: Colors.black,
+              ),
+            ),
           ),
           TextButton(
             onPressed: () {
@@ -71,7 +76,12 @@ class _CreateEditFolderWidgetState extends State<CreateEditFolderWidget> {
                 }
               }
             },
-            child: const Text('OK'),
+            child: const Text(
+              'OK',
+              style: TextStyle(
+                color: Colors.black,
+              ),
+            ),
           ),
         ],
       ),

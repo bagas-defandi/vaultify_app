@@ -5,6 +5,7 @@ import 'package:vaultify_app/core/app_export.dart';
 import 'package:vaultify_app/database/folder_db.dart';
 import 'package:vaultify_app/model/folder.dart';
 import 'package:vaultify_app/model/user.dart';
+import 'package:vaultify_app/pages/file_page.dart';
 import 'package:vaultify_app/pages/login_page.dart';
 import 'package:vaultify_app/widgets/create_edit_folder.dart';
 import 'package:vaultify_app/widgets/custom_elevated_button.dart';
@@ -129,16 +130,23 @@ class _DashboardPageState extends State<DashboardPage> {
                           return Stack(
                             alignment: Alignment.center,
                             children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: const Icon(
-                                  Icons.folder,
-                                  color: Colors.white,
-                                  size: 150,
-                                ),
+                              const Icon(
+                                Icons.folder,
+                                color: Colors.white,
+                                size: 150,
                               ),
                               ListTile(
-                                contentPadding: const EdgeInsets.only(top: 130),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => FilePage(
+                                        folderName: items[index].name,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                contentPadding: const EdgeInsets.only(top: 140),
                                 title: Padding(
                                   padding: const EdgeInsets.only(left: 25.0),
                                   child: Text(
@@ -189,7 +197,12 @@ class _DashboardPageState extends State<DashboardPage> {
                                                     Navigator.of(context)
                                                         .pop(); // Dismiss the dialog
                                                   },
-                                                  child: const Text('No'),
+                                                  child: const Text(
+                                                    'No',
+                                                    style: TextStyle(
+                                                      color: Colors.black,
+                                                    ),
+                                                  ),
                                                 ),
                                                 TextButton(
                                                   onPressed: () {
@@ -201,7 +214,12 @@ class _DashboardPageState extends State<DashboardPage> {
                                                         .whenComplete(() =>
                                                             _refresh()); // Perform deletion logic here
                                                   },
-                                                  child: const Text('Yes'),
+                                                  child: const Text(
+                                                    'Yes',
+                                                    style: TextStyle(
+                                                      color: Colors.black,
+                                                    ),
+                                                  ),
                                                 ),
                                               ],
                                             );
