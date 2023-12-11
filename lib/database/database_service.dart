@@ -1,7 +1,8 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:vaultify_app/database/folder_db.dart';
 import 'package:vaultify_app/database/user_db.dart';
+import 'package:vaultify_app/database/folder_db.dart';
+import 'package:vaultify_app/database/file_db.dart';
 
 class DatabaseService {
   Database? _database;
@@ -33,5 +34,6 @@ class DatabaseService {
   Future<void> create(Database database, int version) async {
     await UserDB().createTable(database);
     await FolderDB().createTable(database);
+    await FileDB().createTable(database);
   }
 }
