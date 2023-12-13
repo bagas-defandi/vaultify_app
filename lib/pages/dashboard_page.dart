@@ -93,15 +93,6 @@ class _DashboardPageState extends State<DashboardPage> {
                 onPressed: () => Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => const LoginPage())),
               ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    'tes',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
-              ),
               Expanded(
                 child: FutureBuilder<List<Folder>>(
                   future: folders,
