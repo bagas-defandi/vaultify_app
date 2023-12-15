@@ -1,13 +1,20 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:open_file/open_file.dart';
+import 'package:vaultify_app/database/file_db.dart';
+import 'package:vaultify_app/model/file.dart';
+import 'package:vaultify_app/model/folder.dart';
 
 class FilePage extends StatefulWidget {
+  final int userId;
+  final Folder? folder;
   final String folderName;
 
   const FilePage({
     super.key,
+    required this.userId,
     required this.folderName,
+    required this.folder,
   });
 
   @override
@@ -29,6 +36,13 @@ class _FilePageState extends State<FilePage> {
           final result =
               await FilePicker.platform.pickFiles(allowMultiple: true);
           if (result != null) {
+            result.files.forEach((file) {
+              FileDB().create(File(
+                  userId: widget.userId,
+                  folderId: widget.folder!.id ?? 0,
+                  name: file.name,
+                  path: file.path ?? ''));
+            });
             setState(() {
               selectedFiles = result.files;
             });

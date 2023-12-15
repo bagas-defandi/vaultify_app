@@ -52,4 +52,12 @@ class FolderDB {
     await db.update(tableName, {'name': name},
         where: 'id = ?', whereArgs: [id]);
   }
+
+  // method untuk mendapatkan folder saat ini
+  Future<Folder?> getFolder(String foldername) async {
+    final db = await DatabaseService().database;
+    var res =
+        await db.query(tableName, where: "name = ?", whereArgs: [foldername]);
+    return res.isNotEmpty ? Folder.fromMap(res.first) : null;
+  }
 }
